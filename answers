@@ -1,0 +1,39 @@
+1.Find all the robots from The Hitchhiker's Guide to the Galaxy.
+ans: SELECT name,source FROM robots WHERE source LIKE '%Galaxy';
+
+2.Find the robot with an "anxious" personality.
+ans: SELECT name FROM robots WHERE personality = 'anxious';
+
+3.Find all recipes that are nut free.
+ans: SELECT name FROM recipes WHERE nut_free='t';
+
+4.Count the number of recipes that are gluten free but not vegetarian.
+ans: SELECT name FROM recipes WHERE gluten_free='t' AND vegetarian='t';
+
+5.Find the animal with the most legs.
+
+ans: 
+SELECT name FROM animals WHERE number_of_legs = (SELECT MAX(number_of_legs) FROM animals);
+
+6.Find the board game that takes the least amount of time to play.
+ans: 
+SELECT name FROM board_games WHERE mins_to_play = (SELECT MIN(mins_to_play) FROM board_games);
+
+7.Find the recipe that takes the most time to prepare.
+ans: SELECT name FROM recipes WHERE minutes_required = (SELECT MAX(minutes_required) FROM recipes);
+
+8.Find all the robots whose name starts with the letter M.
+ans: SELECT MAX(number_of_legs) FROM animals;
+
+9.Count the number of board games that can be played by 8 people.
+ans: SELECT COUNT(name) FROM board_games WHERE ( max_players=8 OR min_players=8);
+
+10.Find all animals that are swimming and egg-laying.
+ans: SELECT name FROM animals WHERE (swimming = 't' AND egg_laying = 't');
+
+11.Find all animals that are swimming and egg-laying but not flying.
+ans: SELECT name FROM animals WHERE (swimming = 't' AND egg_laying = 't' AND flying = 'f');
+
+12.Find the board game that supports the largest number of people.
+SELECT name FROM board_games WHERE max_players=(SELECT MAX(max_players) FROM board_games);
+
